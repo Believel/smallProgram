@@ -1,0 +1,19 @@
+<!-- 列表渲染 -->
+<switch wx:for="{{objectArray}}" wx:key="{{item.id}}">{{item.id}}</switch>
+<button bindtap='switch'>Switch</button>
+<button bindtap='addToFront'>Add to the front</button>
+<switch wx:for="{{numberArray}}" wx:key="*this">{{item}}</switch>
+<button bindtap="addNumberToFront"> Add to the front </button>
+<!-- 模板 -->
+<!-- 引入定义的模板文件位置 -->
+<import src="item.wxml"/>
+<!-- 2. 使用模板 is属性可以传入动态变量-->
+<template is="msgItem" data="{{...item}}"/>
+<button bindtap="goPage">跳转页面</button>
+
+<text wx:if="{{isshow}}">hhhhhh</text>
+
+<view id='outer' catchtap='handleTap'>
+  <view id='inner'>点击我</view>
+</view>
+<button loading="{{loading}}" bindtap="tap">操作</button>

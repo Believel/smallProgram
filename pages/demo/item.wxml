@@ -1,0 +1,6 @@
+<!-- 1. 定义模板 -->
+<template name="msgItem">
+  <view>
+    <text>{{index}}: {{msg}}</text>
+  </view>
+</template>
