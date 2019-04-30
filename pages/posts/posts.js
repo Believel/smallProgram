@@ -1,11 +1,14 @@
 // pages/posts/posts.js
+// 不支持绝对路径
+let postData = require('../../data/post-data.js')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    images: ['/images/posts/sls.jpg','/images/posts/vr.png','/images/posts/xiaolong.jpg']
+    images: ['/images/posts/sls.jpg','/images/posts/vr.png','/images/posts/xiaolong.jpg'],
+    postList: []
   },
 
   /**
@@ -13,6 +16,10 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
+    this.setData({
+      postList: postData.postList
+    })
+
   },
 
   /**
