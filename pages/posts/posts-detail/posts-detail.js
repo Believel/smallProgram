@@ -1,30 +1,27 @@
-// pages/posts/posts.js
-// 不支持绝对路径
-let postData = require('../../data/post-data.js')
+// pages/posts/posts-detail/posts-detail.js
+let postData = require('../../../data/post-data.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    images: ['/images/posts/sls.jpg','/images/posts/vr.png','/images/posts/xiaolong.jpg'],
-    postList: []
+    postDetail: {}
   },
-  goDetail(event) {
-    let id = event.currentTarget.dataset.postid;
-    wx.navigateTo({
-      url: `posts-detail/posts-detail?postid=${id}`
-    })
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
-    this.setData({
-      postList: postData.postList
+    // 拿到页面地址参数值
+    // console.log(options.postid)
+    postData.postList.forEach((item) => {
+      if(item.postId ==options.postid) {
+        this.data.postDetail = Object.assign({}, item);
+        return false;
+      }
     })
-
+    this.setData({ postDetail: this.data.postDetail})
   },
 
   /**

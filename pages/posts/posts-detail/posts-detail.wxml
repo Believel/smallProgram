@@ -1,0 +1,19 @@
+<!--pages/posts/posts-detail/posts-detail.wxml-->
+<view class='container'>
+  <image  class="header-image" src='/images/posts/crab.png'></image>
+  <view class='author-date'>
+    <image class='avatar' src='/images/avatar/2.png'></image>
+    <text class='author'>林白衣</text>
+    <text class='const-text'>发表于</text>
+    <text class='date'>24小时前</text>
+  </view>
+  <text class='title'>标题</text>
+  <view class='tool'>
+    <view class='circle-img'>
+      <image class='img' src='/images/icon/collection.png'></image>
+      <image class='img share-img' src='/images/icon/share.png'></image>
+    </view>
+    <view class='horizon'></view>
+  </view>
+  <text class='detail'>内容</text>
+</view>

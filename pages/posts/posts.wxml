@@ -1,3 +1,4 @@
+<!-- <import src="/pages/posts/posts-item/posts-item-template.wxml" /> -->
 <import src="posts-item/posts-item-template.wxml" />
 <view class='swiper'>
   <swiper class='swiper_container' indicator-dots='{{true}}' autoplay='{{true}}' interval='5000'>
@@ -8,7 +9,8 @@
     </block>
   </swiper>
   <block wx:for="{{postList}}" wx:for-item="item" wx:key="index">
-    <view>
+    <!-- //template -->
+    <view catch:tap="goDetail" data-postid="{{item.postId}}">
       <template is="postsItem" data="{{...item}}" />
     </view>
   </block>
