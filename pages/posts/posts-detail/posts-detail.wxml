@@ -1,13 +1,14 @@
 <!--pages/posts/posts-detail/posts-detail.wxml-->
 <view class='container'>
-  <image  class="header-image" src='/images/posts/crab.png'></image>
+  <image  class="header-image" src='{{postDetail.headImgSrc}}'></image>
+  <image src='/images/music/music-start.png' class='audio'></image>
   <view class='author-date'>
-    <image class='avatar' src='/images/avatar/2.png'></image>
-    <text class='author'>林白衣</text>
+    <image class='avatar' src='{{postDetail.avatar}}'></image>
+    <text class='author'>{{postDetail.author}}</text>
     <text class='const-text'>发表于</text>
-    <text class='date'>24小时前</text>
+    <text class='date'>{{postDetail.dateTime}}</text>
   </view>
-  <text class='title'>标题</text>
+  <text class='title'>{{postDetail.title}}</text>
   <view class='tool'>
     <view class='circle-img'>
       <image class='img' src='/images/icon/collection.png'></image>
@@ -15,5 +16,5 @@
     </view>
     <view class='horizon'></view>
   </view>
-  <text class='detail'>内容</text>
+  <text class='detail'>{{postDetail.detail}}</text>
 </view>

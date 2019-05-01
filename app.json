@@ -6,7 +6,7 @@
     "pages/posts/posts-detail/posts-detail"
   ],
   "window": {
-    "navigationBarBackgroundColor": "#b3d4db"
+    "navigationBarBackgroundColor": "#405f80"
   },
   "sitemapLocation": "sitemap.json"
 }

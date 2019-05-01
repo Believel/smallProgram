@@ -15,12 +15,7 @@ Page({
   onLoad: function (options) {
     // 拿到页面地址参数值
     // console.log(options.postid)
-    postData.postList.forEach((item) => {
-      if(item.postId ==options.postid) {
-        this.data.postDetail = Object.assign({}, item);
-        return false;
-      }
-    })
+    this.data.postDetail = postData.postList[options.postid];
     this.setData({ postDetail: this.data.postDetail})
   },
 
