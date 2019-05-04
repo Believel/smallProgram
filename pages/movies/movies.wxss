@@ -1,0 +1,9 @@
+/* pages/movies/movies.wxss */
+
+@import "movie-list/movie-list-template.wxss";
+.movies-list {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}

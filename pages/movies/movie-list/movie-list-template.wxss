@@ -1,0 +1,32 @@
+@import "../movie/movie-template.wxss";
+.movie-list-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff; 
+  margin-bottom: 20rpx;
+}
+.movie-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx 20rpx 22rpx;
+}
+.slogan {
+  font-size: 24rpx;
+}
+.more {
+}
+.more-text {
+  margin-right: 20rpx;
+  color: #1F4BA5;
+  font-size: 24rpx;
+}
+.more-img {
+  width: 9rpx;
+  height: 16rpx;
+}
+.movie-list-content {
+  display: flex;
+  flex-direction: row;
+}

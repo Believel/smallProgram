@@ -14,7 +14,10 @@ Page({
     //   }
     // })
     // 顶部没有返回按钮,执行onUnload方法
-    wx.redirectTo({
+    // wx.redirectTo({
+    //   url: '../posts/posts',
+    // })
+    wx.switchTab({
       url: '../posts/posts',
     })
   },
