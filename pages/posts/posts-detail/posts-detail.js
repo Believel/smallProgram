@@ -1,5 +1,6 @@
 // pages/posts/posts-detail/posts-detail.js
 let postData = require('../../../data/post-data.js');
+let app = getApp()
 Page({
 
   /**
@@ -8,24 +9,25 @@ Page({
   data: {
     postDetail: {},
     collection: false,
-    postid: ''
+    postid: '',
+    isMusic: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     // 拿到页面地址参数值
     // console.log(options.postid)
     let id = options.postid;
     this.data.postDetail = postData.postList[id];
-    this.setData({ 
-      postDetail: this.data.postDetail, 
+    this.setData({
+      postDetail: this.data.postDetail,
       postid: id
     })
     // 判断是否已经收藏
     let collections = wx.getStorageSync('collections');
-    if(collections) {
+    if (collections) {
       this.setData({
         collection: collections[id] ? true : false
       })
@@ -34,6 +36,28 @@ Page({
       collections[id] = false;
       wx.setStorageSync('collections', collections)
     }
+    if (app.globalData.g_isPlayingMusic && app.globalData.g_isCurrentMusicPostid === this.data.postid) {
+      this.setData({
+        isMusic: true
+      })
+    }
+    this.onMusicMintor()
+  },
+  onMusicMintor() {
+    let _this = this;
+    wx.getBackgroundAudioManager().onPlay(function () {
+      _this.setData({
+        isMusic: true
+      })
+      app.globalData.g_isPlayingMusic = true
+      app.globalData.g_isCurrentMusicPostid = _this.data.postid
+    })
+    wx.onBackgroundAudioPause(function () {
+      _this.setData({
+        isMusic: false
+      })
+      app.globalData.g_isPlayingMusic = false
+    })
   },
   onCollectionTap(event) {
     try {
@@ -44,7 +68,7 @@ Page({
       collections[this.data.postid] = collection;
       this.onShowToast(collections, collection)
       // this.onShowModal(collections, collection)
-    }catch(e) {}
+    } catch (e) {}
   },
   onShowToast(collections, collection) {
     wx.setStorageSync('collections', collections)
@@ -85,61 +109,77 @@ Page({
       success(res) {
         // res.tapIndex
         wx.showModal({
-          title: '用户'+ itemList[res.tapIndex],
+          title: '用户' + itemList[res.tapIndex],
           content: '用户是否取消,现在无法实现分享，什么时候能支持呢',
         })
       }
     })
   },
   onMusicTap(event) {
-
+    let isMusic = this.data.isMusic;
+    let music = this.data.postDetail.music;
+    if (isMusic) {
+      wx.pauseBackgroundAudio();
+      this.setData({
+        isMusic: false
+      })
+    } else {
+      this.setData({
+        isMusic: true
+      })
+      wx.playBackgroundAudio({
+        dataUrl: music.url,
+        title: music.title,
+        coverImgUrl: music.coverImg
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })
