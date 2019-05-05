@@ -1,9 +1,9 @@
 /* pages/movies/movies.wxss */
 
 @import "movie-list/movie-list-template.wxss";
-.movies-list {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
+.movies-container {
+  background-color: #f2f2f2;
+}
+.movies-template {
+  margin-bottom: 30rpx;
 }

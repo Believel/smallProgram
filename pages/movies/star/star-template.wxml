@@ -1,12 +1,8 @@
 <template name="starTemplate">
   <view class="star-wrapper">
     <view class='star-img-wrapper'>
-      <image class='star-img' src='/images/icon/star.png'></image>
-      <image src='/images/icon/star.png'></image>
-      <image src='/images/icon/star.png'></image>
-      <image src='/images/icon/star.png'></image>
-      <image src='/images/icon/none-star.png'></image>
+      <image wx:for="{{stars}}" wx:key="{{index}}" src="{{item > 0 ? '/images/icon/star.png': '/images/icon/none-star.png'}}"></image>
     </view>
-    <text class='star-score'>8.7</text>
+    <text class='star-score'>{{score}}</text>
   </view>
 </template>

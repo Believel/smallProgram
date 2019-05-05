@@ -1,4 +1,6 @@
 // pages/movies/movies.js
+let util = require('../../utils/util.js')
+let app = getApp()
 Page({
 
   /**
@@ -12,7 +14,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let inTheatersUrl = app.globalData.doubanBase + "/v2/movie/in_theaters" + "?start=0&count=3";
+    let comingSoonUrl = app.globalData.doubanBase + "/v2/movie/coming_soon" + "?start=0&count=3";
+    let top250Url = app.globalData.doubanBase + "/v2/movie/top250" + "?start=0&count=3";
+    this.getMovieListData(inTheatersUrl, 'inTheaters', '正在热映')
+    this.getMovieListData(comingSoonUrl, 'comingSoon', '即将上映')
+    this.getMovieListData(top250Url, 'top250', '豆瓣Top250')
   },
 
   /**
@@ -62,5 +69,46 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  getMovieListData(url, key, categoryTitle) {
+    let _this = this;
+    wx.request({
+      url: url,
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      method: 'GET',
+      success(res) {
+        _this.processDoubanData(res.data, key, categoryTitle)
+      },
+      fail(error) {
+        // 断网
+        console.log(error)
+      }
+    })
+  },
+  processDoubanData(data, key, categoryTitle) {
+    console.log(data);
+    let movies = [], readyData = {};
+    for(let idx in data.subjects) {
+      let subject = data.subjects[idx]
+      let title = subject.title
+      if(title.length >= 6) {
+        title = title.substring(0, 6) + '...';
+      }
+      let temp = {
+        stars: util.convertToStarsArray(subject.rating.stars),
+        title: title,
+        average: subject.rating.average,
+        coverageUrl: subject.images.large,
+        movieId: subject.id
+      }
+      movies.push(temp)
+    }
+    readyData[key] =  {
+      categoryTitle,
+      movies
+    }
+    this.setData(readyData)
   }
 })
