@@ -88,7 +88,6 @@ Page({
     })
   },
   processDoubanData(data, key, categoryTitle) {
-    console.log(data);
     let movies = [], readyData = {};
     for(let idx in data.subjects) {
       let subject = data.subjects[idx]
@@ -110,5 +109,12 @@ Page({
       movies
     }
     this.setData(readyData)
+  },
+  // 更多
+  getMoreMovie(event) {
+    let category = event.currentTarget.dataset.category;
+    wx.navigateTo({
+      url: 'more-movie/more-movie?category='+ category
+    })
   }
 })

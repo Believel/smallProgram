@@ -1,0 +1,10 @@
+@import "/pages/movies/movie/movie-template.wxss";
+.grid-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 40rpx 0 0 6rpx;
+}
+.single-grid-container {
+  margin-bottom: 40rpx;
+}
