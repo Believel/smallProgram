@@ -17,3 +17,4 @@
   <view id='inner'>点击我</view>
 </view>
 <button loading="{{loading}}" bindtap="tap">操作</button>
+
