@@ -121,10 +121,15 @@ Page({
     this.setData({
       movies: totalMovies
     })
-    this.data.totalCount = moviesDouban.total;
+    this.data.totalCount += 20;
     // 在当前页面隐藏导航条隐藏动画
     wx.hideNavigationBarLoading();
     // 停止当前页面下拉刷新
     wx.stopPullDownRefresh();
+  },
+  scrollTap() {
+    wx.showNavigationBarLoading();
+    let url = this.data.requestUrl + "?start="+this.data.totalCount+"&count=20";
+    util.http(url, this.processDoubanData)
   }
 })
