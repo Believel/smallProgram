@@ -52,7 +52,15 @@ Page({
       app.globalData.g_isPlayingMusic = true
       app.globalData.g_isCurrentMusicPostid = _this.data.postid
     })
+    // 监听音乐暂停事件
     wx.onBackgroundAudioPause(function () {
+      _this.setData({
+        isMusic: false
+      })
+      app.globalData.g_isPlayingMusic = false
+    })
+    // 监听音乐停止事件
+    wx.onBackgroundAudioStop(function() {
       _this.setData({
         isMusic: false
       })

@@ -131,5 +131,12 @@ Page({
     wx.showNavigationBarLoading();
     let url = this.data.requestUrl + "?start="+this.data.totalCount+"&count=20";
     util.http(url, this.processDoubanData)
+  },
+  // 电影详情页
+  goMovieDetail(event) {
+    let movieId = event.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '../movie-detail/movie-detail?id=' + movieId,
+    })
   }
 })

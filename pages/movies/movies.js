@@ -7,7 +7,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    searchName: '',        // 输入框的搜索内容
+    conatinerShow: true,   // 电影列表是否显示
+    searchPanelShow: false // 搜索电影列表是否显示
   },
 
   /**
@@ -115,6 +117,38 @@ Page({
     let category = event.currentTarget.dataset.category;
     wx.navigateTo({
       url: 'more-movie/more-movie?category='+ category
+    })
+  },
+  // 输入框聚焦时触发
+  onBindFocus(event) {
+    // 控制搜索电影页面的显示
+    this.setData({
+      conatinerShow: false,
+      searchPanelShow: true,
+      searchName: event.detail.value
+    })
+  },
+  // 点击完成按钮时触发
+  onBindConfirm(event) {
+    console.log(event)
+    let text = event.detail.value;
+    let searchUrl = app.globalData.doubanBase + "/v2/movie/search?q=" + text;
+    this.getMovieListData(searchUrl, "searchResult", "")
+  },
+  // 取消搜索页面
+  onCancelSearchTap() {
+    this.setData({
+      conatinerShow: true,
+      searchPanelShow: false,
+      searchResult: {},
+      searchName: ''
+    })
+  },
+  // 电影详情页
+  goMovieDetail(event) {
+    let movieId = event.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: 'movie-detail/movie-detail?id='+movieId,
     })
   }
 })
