@@ -54,5 +54,12 @@ Page({
     this.setData({
       movie
     })
+  },
+  viewMoviePostImg(event) {
+    let imgUrl = event.currentTarget.dataset.src;
+    // 在新页面中全屏预览图片
+    wx.previewImage({
+      urls: [imgUrl],
+    })
   }
 })  
