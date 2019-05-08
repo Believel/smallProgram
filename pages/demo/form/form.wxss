@@ -1,0 +1,49 @@
+page {
+  background-color: #e2e2e22a;
+}
+.page {
+  display: flex;
+  flex-direction: column;
+}
+.page_hd {
+  display: flex;
+  flex-direction: column;
+  margin: 20rpx auto;
+}
+.page-title,
+.page-desc {
+  font-size: 26rpx;
+  color: #999;
+  padding-bottom: 10rpx;
+}
+.section {
+  margin: 30rpx;
+}
+.section-title {
+  color: #999;
+  font-size: 26rpx;
+  padding-bottom: 10rpx;
+}
+.section input {
+  height: 100rpx;
+  border-radius: 10rpx;
+  background-color: #fff;
+}
+.placeholder {
+  margin-left: 20rpx;
+  color: #999;
+  font-size: 30rpx;
+}
+.radio, .checkbox {
+  color: #999;
+  font-size: 30rpx;
+  display: flex;
+  flex-direction: column;
+}
+.checkbox {
+  flex-direction: row;
+  padding-bottom: 20rpx;
+}
+.radio label {
+  padding-bottom: 20rpx;
+}

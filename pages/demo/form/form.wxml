@@ -1,0 +1,58 @@
+<view class='page'>
+  <view class='page_hd'>
+    <text class='page-title '>Form</text>
+    <text class='page-desc'>表单</text>
+  </view>
+  <form bindsubmit="formSubmit" bindreset="formReset">
+    <view class='section'>
+      <view class='section-title'>Switch</view>
+      <switch name="switch" bindchange="onBindSwitchChange" color='red'></switch>
+    </view>
+
+    <view class='section'>
+      <view class='section-title'>slide</view>
+      <slider name="slider" value='50' show-value step='10' backgroundColor='red' activeColor="yellow" block-size="28" block-color="green" bindchange="onBindSliderChange"></slider>
+    </view>
+
+    <view class='section'>
+      <view class='section-title'>Input</view>
+      <input name="input" placeholder='please input here' placeholder-class="placeholder" />
+    </view>
+
+    <view class='section'>
+      <view class='section-title'>Radio</view>
+      <radio-group name="radiogroup" class="radio" bindchange="onBindRadioChange">
+        <label>
+          <radio value="radio1">radio1</radio>
+        </label>
+        <label>
+          <radio value="radio2">radio2</radio>
+        </label>
+      </radio-group>
+    </view>
+
+    <view class='section'>
+      <view class='section-title'>Checkbox</view>
+      <checkbox-group name="checkbox" bindchange="onBindCheckboxChange">
+        <label class="checkbox">
+          <checkbox value="checkbox1" /> checkbox1
+        </label>
+        <label class="checkbox">
+          <checkbox value="checkbox2" /> checkbox2
+        </label>
+      </checkbox-group>
+    </view>
+    <view class='section'>
+      <view class='section-title'>picker</view>
+      <picker bindchange='onBindPickerChange' value="{{index}}" range="{{array}}">
+        <view class="picker">
+          当前选择：{{array[index]}}
+        </view>
+      </picker>
+    </view>
+    <view class=" section btn-area">
+      <button form-type="submit">Submit</button>
+      <button form-type="reset">Reset</button>
+    </view>
+  </form>
+</view>
