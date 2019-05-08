@@ -1,0 +1,9 @@
+<view class='btn-container'>
+  <button type='primary' bindtap='onBindChooseAddress'>选择收货地址</button>
+  <button type='warn' bindtap='onBindUserSet'>用户设置界面</button>
+  <button type='primary' bindtap='onBindLogin'>检查登录状态</button>
+  <button type='primary' bindtap='onBindUserInfo'>获得用户信息</button>
+  <button type='warn' bindtap='onBindStartRecord'>开始录音</button>
+  <button type='primary' bindtap='onBindSetShare'>设置分享按钮</button>
+  <button type='warn' bindtap='onBindCancelShare'>取消分享按钮</button>
+</view>

@@ -1,0 +1,6 @@
+.btn-container {
+  margin: 20rpx auto;
+}
+.btn-container button {
+  margin-bottom: 40rpx;
+}
