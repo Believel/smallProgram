@@ -1,5 +1,7 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "custrom-comp": "../../components/customComp/custom-comp"
+  },
   "enablePullDownRefresh": true,
   "onReachBottomDistance": 100
 }

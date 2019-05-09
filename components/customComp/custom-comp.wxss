@@ -1,0 +1,4 @@
+/* components/customComp/custom-comp.wxss */
+.wrapper {
+  color: red
+}

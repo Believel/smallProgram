@@ -165,5 +165,9 @@ Page({
       icon: 'success',
       duration: 1500
     })
+  },
+  onMyEvent(e) {
+    // 自定义组件触发事件
+    console.log(e.detail)
   }
 })
